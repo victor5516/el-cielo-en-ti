@@ -32,7 +32,7 @@ export const ToastProvider = ({ children }) => {
             className={
               [
                 'pointer-events-auto rounded-lg px-4 py-3 shadow-lg ring-1 ring-inset transition',
-                t.variant === 'success' ? 'bg-emerald-600/90 text-white ring-emerald-400/40' : 'bg-rose-600/90 text-white ring-rose-400/40',
+                t.variant === 'success' ? 'bg-third/90 text-secondary ring-third/40' : 'bg-[color:oklch(60%_0.1_20)] text-secondary ring-secondary/30',
               ].join(' ')
             }
           >
@@ -42,7 +42,7 @@ export const ToastProvider = ({ children }) => {
               <button
                 type="button"
                 aria-label="Close notification"
-                className="ml-auto inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-white/10 text-white hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                className="ml-auto inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-secondary/10 text-secondary hover:bg-secondary/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
                 onClick={() => remove(t.id)}
               >
                 ×

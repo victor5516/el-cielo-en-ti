@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-
+import logo2 from '../assets/logo_4.png'
 const navLinks = [
   { href: '#inicio', label: 'Inicio' },
   { href: '#sobre-mi', label: 'Sobre Mí' },
@@ -63,13 +63,13 @@ export const Navbar = () => {
       aria-label="Main"
       className={[
         'fixed inset-x-0 top-0 z-50 w-full transition-all',
-        scrolled ? 'bg-slate-900/95 backdrop-blur supports-[backdrop-filter]:bg-slate-900/75 shadow-lg shadow-violet-500/10' : 'bg-slate-900/90',
+        scrolled ? 'bg-primary/90 backdrop-blur supports-[backdrop-filter]:bg-primary/80 shadow-lg shadow-third/20' : 'bg-primary/90',
       ].join(' ')}
       onKeyDown={handleKeyDown}
     >
       <div className={containerClass}>
-        <a href="#inicio" className="flex items-center gap-2 py-3 text-lg font-bold text-violet-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400" aria-label="Ir al inicio">
-          <span className="inline-block">Mercurio Astral</span>
+        <a href="#inicio" className="flex items-center gap-2 py-3 text-lg font-bold text-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary" aria-label="Ir al inicio">
+          <img src={logo2} alt="Logo El Cielo en Ti" className="h-12 md:h-16 w-auto object-contain shrink-0" />
         </a>
 
         <button
@@ -77,7 +77,7 @@ export const Navbar = () => {
           aria-label="Abrir menú"
           aria-expanded={isOpen}
           onClick={handleToggleMenu}
-          className="ml-auto inline-flex h-10 w-10 items-center justify-center rounded-md text-slate-200 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 md:hidden"
+          className="ml-auto inline-flex h-10 w-10 items-center justify-center rounded-md text-secondary hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary md:hidden"
         >
           <span aria-hidden>☰</span>
         </button>
@@ -89,14 +89,14 @@ export const Navbar = () => {
                 href={link.href}
                 aria-current={active === link.href ? 'page' : undefined}
                 className={[
-                  'relative inline-flex items-center px-1.5 py-2 text-sm font-medium text-slate-300 outline-none transition hover:text-violet-400 focus-visible:ring-2 focus-visible:ring-violet-400',
-                  active === link.href ? 'text-violet-400' : '',
+                  'relative inline-flex items-center px-1.5 py-2 text-sm font-medium text-secondary/80 outline-none transition hover:text-secondary focus-visible:ring-2 focus-visible:ring-secondary',
+                  active === link.href ? 'text-secondary' : '',
                 ].join(' ')}
                 onClick={(e) => handleSmoothNavigate(e, link.href)}
               >
                 {link.label}
                 <span className={[
-                  'absolute -bottom-0.5 left-0 h-0.5 w-0 bg-gradient-to-r from-violet-500 to-pink-500 transition-all',
+                  'absolute -bottom-0.5 left-0 h-0.5 w-0 bg-gradient-to-r from-third to-secondary transition-all',
                   active === link.href ? 'w-full' : '',
                 ].join(' ')} />
               </a>
@@ -112,14 +112,14 @@ export const Navbar = () => {
           isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0',
         ].join(' ')}
       >
-        <ul className="space-y-1 border-t border-white/10 bg-slate-900/95 px-4 py-3">
+        <ul className="space-y-1 border-t border-white/10 bg-primary/95 px-4 py-3">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
                 className={[
-                  'block rounded-md px-3 py-2 text-slate-200 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400',
-                  active === link.href ? 'text-violet-400' : '',
+                  'block rounded-md px-3 py-2 text-secondary hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary',
+                  active === link.href ? 'text-secondary' : '',
                 ].join(' ')}
                 onClick={(e) => handleSmoothNavigate(e, link.href)}
               >

@@ -7,7 +7,7 @@ import { Home } from './pages/Home.jsx'
 const App = () => {
   return (
     <ToastProvider>
-      <div className="min-h-dvh bg-slate-950 text-slate-100">
+      <div className="min-h-dvh bg-gradient-to-b from-[#E0E0E0] to-[#888888] text-primary">
         <Navbar />
         <main id="main" className="pt-20">{/* offset for fixed navbar */}
           <Routes>

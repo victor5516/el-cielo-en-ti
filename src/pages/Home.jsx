@@ -1,11 +1,25 @@
 import { useMemo, useRef, useState } from 'react'
 import { useToast } from '../components/ToastProvider.jsx'
+import logo3 from '../assets/logo_3.png'
+import yenni from '../assets/yenni.jpeg'
+import aquarius from '../assets/zodiac/aquarius.svg'
+import pisces from '../assets/zodiac/pisces.svg'
+import aries from '../assets/zodiac/aries.svg'
+import taurus from '../assets/zodiac/taurus.svg'
+import gemini from '../assets/zodiac/gemini.svg'
+import cancer from '../assets/zodiac/cancer.svg'
+import leo from '../assets/zodiac/leo.svg'
+import virgo from '../assets/zodiac/virgo.svg'
+import libra from '../assets/zodiac/libra.svg'
+import scorpio from '../assets/zodiac/scorpio.svg'
+import sagittarius from '../assets/zodiac/sagittarius.svg'
+import capricorn from '../assets/zodiac/capricorn.svg'
 
-const zodiacSymbols = ['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓']
+export const zodiacSymbols = [aquarius, pisces, aries, taurus, gemini, cancer, leo, virgo, libra, scorpio, sagittarius, capricorn]
 
 const ServiceCard = ({ icon, title, description, features, price, featured = false }) => {
-  const baseClass = 'relative rounded-2xl border border-slate-800 bg-slate-900/60 p-8 text-center transition will-change-transform'
-  const featuredClass = featured ? 'scale-[1.02] border-violet-500/60 ring-1 ring-violet-500/30' : ''
+  const baseClass = 'relative rounded-2xl border border-third/30 bg-primary/70 p-8 text-center transition will-change-transform'
+  const featuredClass = featured ? 'scale-[1.02] border-third ring-1 ring-third/40' : ''
   return (
     <div className={[baseClass, featuredClass].join(' ')} tabIndex={0} aria-label={title}>
       {featured && (
@@ -13,23 +27,23 @@ const ServiceCard = ({ icon, title, description, features, price, featured = fal
           Más Popular
         </div>
       )}
-      <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-pink-500 text-2xl text-white">
+      <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-third text-2xl text-secondary">
         {icon}
       </div>
-      <h3 className="text-xl font-semibold text-slate-100">{title}</h3>
-      <p className="mt-3 text-sm leading-6 text-slate-400">{description}</p>
-      <ul className="mt-5 space-y-2 text-left text-sm text-slate-300">
+      <h3 className="text-xl font-semibold text-secondary">{title}</h3>
+      <p className="mt-3 text-sm leading-6 text-secondary/70">{description}</p>
+      <ul className="mt-5 space-y-2 text-left text-sm text-secondary/80">
         {features.map((f) => (
           <li key={f} className="relative pl-5">
-            <span className="absolute left-0 top-0 text-emerald-400">✓</span>
+            <span className="absolute left-0 top-0 text-secondary">✓</span>
             {f}
           </li>
         ))}
       </ul>
-      <div className="mt-6 text-lg font-bold text-violet-400">Desde {price}</div>
+      <div className="mt-6 text-lg font-bold text-secondary">Desde {price}</div>
       <a
         href="#contacto"
-        className="mt-4 inline-flex w-full items-center justify-center rounded-md border border-slate-700 px-4 py-2 text-sm font-medium text-slate-100 hover:border-violet-500 hover:text-violet-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
+        className="mt-4 inline-flex w-full items-center justify-center rounded-md border border-third/40 px-4 py-2 text-sm font-medium text-secondary hover:border-secondary hover:text-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
       >
         Solicitar
       </a>
@@ -71,26 +85,32 @@ export const Home = () => {
   return (
     <div>
       {/* Hero */}
-      <section id="inicio" tabIndex={0} aria-label="Inicio" className="relative flex min-h-dvh items-center overflow-hidden bg-slate-950">
-        <div className="pointer-events-none absolute inset-0">
-          <div className="absolute left-1/5 top-3/4 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-600/30 blur-3xl" />
-          <div className="absolute right-1/6 top-1/4 h-64 w-64 translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-500/30 blur-3xl" />
-          <div className="absolute left-1/2 top-1/3 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-pink-500/20 blur-3xl" />
-        </div>
+      <section id="inicio" tabIndex={0} aria-label="Inicio" className="relative flex min-h-dvh items-center overflow-hidden bg-gradient-to-b from-[#E0E0E0] to-[#888888]">
+        <div className="pointer-events-none absolute inset-0" />
         <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 pt-10 md:grid-cols-2">
           <div>
-            <h1 className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-4xl font-extrabold text-transparent md:text-5xl">
-              Descubre los Secretos del Universo
+            <h1 className="text-4xl font-extrabold text-primary md:text-5xl">
+              Observa el Cielo en Ti
             </h1>
-            <p className="mt-4 max-w-prose text-lg text-slate-300">
-              Conecta con tu destino a través de la sabiduría ancestral de los astros y las cartas del tarot
+            <p className="mt-4 max-w-prose text-lg text-primary/80">
+             Te ayudo a verte como nunca antes lo has hecho, e interpreto el mensaje que los astros tienen para ti.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#servicios" className="rounded-md bg-gradient-to-r from-violet-500 to-pink-500 px-5 py-2.5 font-semibold text-white shadow-lg shadow-violet-500/20 transition hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400" aria-label="Ver Servicios">Ver Servicios</a>
-              <a href="#contacto" className="rounded-md border border-violet-500 px-5 py-2.5 font-semibold text-violet-300 transition hover:bg-violet-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400" aria-label="Consulta Gratis">Consulta Gratis</a>
+              <a href="#servicios" className="rounded-md bg-third px-5 py-2.5 font-semibold text-secondary shadow-lg shadow-black/10 transition hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-third" aria-label="Ver Servicios">Ver Servicios</a>
+
             </div>
           </div>
+          {/* <div className="relative mx-auto h-[400px] w-[400px] max-w-full">
+          <img src={logo2} alt="Logo El Cielo en Ti" className="h-full w-auto object-contain" />
+          </div> */}
           <div className="relative mx-auto h-[400px] w-[400px] max-w-full">
+            <div className="absolute inset-0 z-10 flex items-center justify-center" aria-hidden>
+              <img
+                src={logo3}
+                alt="Centro del círculo"
+
+              />
+            </div>
             <div
               className="absolute inset-0 animate-[spin_30s_linear_infinite]"
               aria-hidden
@@ -98,10 +118,10 @@ export const Home = () => {
               {zodiacSymbols.map((sym, idx) => (
                 <div
                   key={sym}
-                  className="absolute text-2xl text-violet-400 transition-colors hover:scale-110 hover:text-amber-400"
+                  className="absolute text-2xl text-third transition-colors hover:scale-110 hover:text-primary"
                   style={{ transformOrigin: '200px 200px', transform: `rotate(${zodiacAngles[idx]}deg) translateY(-180px)` }}
                 >
-                  {sym}
+                  <img src={sym} alt={`Símbolo zodiacal ${idx + 1}`} className="h-8 w-8 object-contain" />
                 </div>
               ))}
             </div>
@@ -110,32 +130,32 @@ export const Home = () => {
       </section>
 
       {/* About */}
-      <section id="sobre-mi" tabIndex={0} aria-label="Sobre mí" className="bg-slate-900/70 py-20">
+      <section id="sobre-mi" tabIndex={0} aria-label="Sobre mí" className="py-20 bg-gradient-to-b from-[#a9a5d6] to-[#bac6eb]">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 md:grid-cols-3">
           <div className="mx-auto md:col-span-1">
-            <div className="mx-auto flex h-64 w-64 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-pink-500">
-              <span className="text-6xl text-white" aria-hidden>☾</span>
+            <div className="mx-auto flex h-64 w-64 items-center justify-center overflow-hidden rounded-full bg-third">
+              <img src={yenni} alt="Logo El Cielo en Ti" className="h-full w-full rounded-full object-cover" />
             </div>
           </div>
           <div className="md:col-span-2">
-            <h2 className="text-3xl font-bold text-slate-100">Sobre Mí</h2>
-            <p className="mt-4 text-lg text-slate-300">Soy una astróloga apasionada con años de experiencia ayudando a las personas a descubrir su verdadero potencial a través de la lectura de los astros.</p>
-            <p className="mt-3 text-slate-400">Mi misión es guiarte en tu camino de autoconocimiento, utilizando herramientas milenarias como la astrología y el tarot para revelar los mensajes que el universo tiene para ti.</p>
+            <h2 className="text-3xl font-bold text-primary">Sobre Mí</h2>
+            <p className="mt-4 text-lg text-primary/80">Soy una astróloga apasionada con años de experiencia ayudando a las personas a descubrir su verdadero potencial a través de la lectura de los astros.</p>
+            <p className="mt-3 text-primary/70">Mi misión es guiarte en tu camino de autoconocimiento, utilizando herramientas milenarias como la astrología y el tarot para revelar los mensajes que el universo tiene para ti.</p>
             <div className="mt-6 grid gap-3">
-              <div className="flex items-center gap-3 rounded-md bg-slate-800/60 p-3"><span className="text-amber-400">★</span><span className="text-slate-300">+5 años de experiencia</span></div>
-              <div className="flex items-center gap-3 rounded-md bg-slate-800/60 p-3"><span className="text-amber-400">👥</span><span className="text-slate-300">+500 consultas realizadas</span></div>
-              <div className="flex items-center gap-3 rounded-md bg-slate-800/60 p-3"><span className="text-amber-400">✓</span><span className="text-slate-300">Certificada en Astrología</span></div>
+              <div className="flex items-center gap-3 rounded-md bg-white/40 p-3"><span className="text-third">★</span><span className="text-primary/90">+5 años de experiencia</span></div>
+              <div className="flex items-center gap-3 rounded-md bg-white/40 p-3"><span className="text-third">👥</span><span className="text-primary/90">+500 consultas realizadas</span></div>
+              <div className="flex items-center gap-3 rounded-md bg-white/40 p-3"><span className="text-third">✓</span><span className="text-primary/90">Certificada en Astrología</span></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services */}
-      <section id="servicios" tabIndex={0} aria-label="Servicios" className="bg-slate-950 py-20">
+      <section id="servicios" tabIndex={0} aria-label="Servicios" className="py-20 bg-gradient-to-b from-[#E0E0E0] to-[#888888]">
         <div className="mx-auto max-w-7xl px-4">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-slate-100">Mis Servicios</h2>
-            <p className="mt-2 text-slate-300">Descubre qué servicio es perfecto para ti</p>
+            <h2 className="text-3xl font-bold text-primary">Mis Servicios</h2>
+            <p className="mt-2 text-primary/80">Descubre qué servicio es perfecto para ti</p>
           </div>
           <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
             <ServiceCard
@@ -180,11 +200,11 @@ export const Home = () => {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonios" tabIndex={0} aria-label="Testimonios" className="bg-slate-900/70 py-20">
+      <section id="testimonios" tabIndex={0} aria-label="Testimonios" className="py-20 bg-gradient-to-b from-[#a9a5d6] to-[#bac6eb]">
         <div className="mx-auto max-w-7xl px-4">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-slate-100">Lo que Dicen Mis Clientes</h2>
-            <p className="mt-2 text-slate-300">Experiencias reales de transformación</p>
+            <h2 className="text-3xl font-bold text-primary">Lo que Dicen Mis Clientes</h2>
+            <p className="mt-2 text-primary/80">Experiencias reales de transformación</p>
           </div>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
             {[
@@ -201,12 +221,12 @@ export const Home = () => {
                 author: 'Ana Sofía', tag: 'Lectura de Tarot',
               },
             ].map((t) => (
-              <div key={t.author} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-                <div className="mb-3 text-amber-400">★★★★★</div>
-                <p className="text-sm italic text-slate-300">“{t.text}”</p>
+              <div key={t.author} className="rounded-2xl border border-third/30 bg-white/40 p-6">
+                <div className="mb-3 text-third">★★★★★</div>
+                <p className="text-sm italic text-primary/80">“{t.text}”</p>
                 <div className="mt-4">
-                  <strong className="block text-slate-100">{t.author}</strong>
-                  <span className="text-xs text-slate-400">{t.tag}</span>
+                  <strong className="block text-primary">{t.author}</strong>
+                  <span className="text-xs text-primary/70">{t.tag}</span>
                 </div>
               </div>
             ))}
@@ -215,26 +235,26 @@ export const Home = () => {
       </section>
 
       {/* Contact */}
-      <section id="contacto" tabIndex={0} aria-label="Contacto" className="bg-slate-950 py-20">
+      <section id="contacto" tabIndex={0} aria-label="Contacto" className="py-20 bg-gradient-to-b from-[#E0E0E0] to-[#888888]">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 md:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-bold text-slate-100">¿Lista para Descubrir tu Destino?</h2>
-            <p className="mt-2 text-slate-300">Agenda tu consulta personalizada y comienza tu viaje de autoconocimiento.</p>
+            <h2 className="text-3xl font-bold text-primary">¿Lista para Descubrir tu Destino?</h2>
+            <p className="mt-2 text-primary/80">Agenda tu consulta personalizada y comienza tu viaje de autoconocimiento.</p>
             <div className="mt-6 space-y-3">
-              <div className="flex items-center gap-3 rounded-md bg-slate-900/60 p-3"><span className="text-violet-400">🟢</span><div><h4 className="font-semibold text-slate-100">WhatsApp</h4><p className="text-slate-400">+1 (555) 123-4567</p></div></div>
-              <div className="flex items-center gap-3 rounded-md bg-slate-900/60 p-3"><span className="text-violet-400">✉</span><div><h4 className="font-semibold text-slate-100">Email</h4><p className="text-slate-400">consultas@mercurioastral.com</p></div></div>
-              <div className="flex items-center gap-3 rounded-md bg-slate-900/60 p-3"><span className="text-violet-400">◎</span><div><h4 className="font-semibold text-slate-100">Instagram</h4><p className="text-slate-400">@mercurioastral</p></div></div>
+              <div className="flex items-center gap-3 rounded-md bg-white/40 p-3"><span className="text-third">🟢</span><div><h4 className="font-semibold text-primary">WhatsApp</h4><p className="text-primary/70">+1 (555) 123-4567</p></div></div>
+              <div className="flex items-center gap-3 rounded-md bg-white/40 p-3"><span className="text-third">✉</span><div><h4 className="font-semibold text-primary">Email</h4><p className="text-primary/70">consultas@mercurioastral.com</p></div></div>
+              <div className="flex items-center gap-3 rounded-md bg-white/40 p-3"><span className="text-third">◎</span><div><h4 className="font-semibold text-primary">Instagram</h4><p className="text-primary/70">@mercurioastral</p></div></div>
             </div>
-            <div className="mt-6 rounded-md border border-slate-800 bg-slate-900/60 p-4">
-              <h4 className="mb-2 font-semibold text-violet-400">Horarios de Consulta</h4>
-              <p className="text-slate-300">Lunes a Viernes: 9:00 AM - 7:00 PM</p>
-              <p className="text-slate-300">Sábados: 10:00 AM - 4:00 PM</p>
-              <p className="text-slate-300">Domingos: Solo citas especiales</p>
+            <div className="mt-6 rounded-md border border-third/30 bg-white/40 p-4">
+              <h4 className="mb-2 font-semibold text-primary">Horarios de Consulta</h4>
+              <p className="text-primary/80">Lunes a Viernes: 9:00 AM - 7:00 PM</p>
+              <p className="text-primary/80">Sábados: 10:00 AM - 4:00 PM</p>
+              <p className="text-primary/80">Domingos: Solo citas especiales</p>
             </div>
           </div>
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <div className="rounded-2xl border border-third/30 bg-white/40 p-6">
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-4" noValidate>
-              <h3 className="text-center text-xl font-semibold text-slate-100">Solicita tu Consulta Gratuita</h3>
+              <h3 className="text-center text-xl font-semibold text-primary">Solicita tu Consulta Gratuita</h3>
               <div>
                 <label htmlFor="name" className="sr-only">Nombre</label>
                 <input
@@ -245,7 +265,7 @@ export const Home = () => {
                   placeholder="Tu nombre completo"
                   value={formState.name}
                   onChange={handleInputChange}
-                  className="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                  className="w-full rounded-md border border-third/40 bg-white/70 px-3 py-2 text-primary placeholder-primary/50 focus:outline-none focus:ring-2 focus:ring-third"
                 />
               </div>
               <div>
@@ -258,7 +278,7 @@ export const Home = () => {
                   placeholder="Tu email"
                   value={formState.email}
                   onChange={handleInputChange}
-                  className="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                  className="w-full rounded-md border border-third/40 bg-white/70 px-3 py-2 text-primary placeholder-primary/50 focus:outline-none focus:ring-2 focus:ring-third"
                 />
               </div>
               <div>
@@ -270,7 +290,7 @@ export const Home = () => {
                   placeholder="Tu teléfono"
                   value={formState.phone}
                   onChange={handleInputChange}
-                  className="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                  className="w-full rounded-md border border-third/40 bg-white/70 px-3 py-2 text-primary placeholder-primary/50 focus:outline-none focus:ring-2 focus:ring-third"
                 />
               </div>
               <div>
@@ -281,7 +301,7 @@ export const Home = () => {
                   required
                   value={formState.service}
                   onChange={handleInputChange}
-                  className="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                  className="w-full rounded-md border border-third/40 bg-white/70 px-3 py-2 text-primary focus:outline-none focus:ring-2 focus:ring-third"
                 >
                   <option value="">Selecciona un servicio</option>
                   <option value="carta-astral">Lectura de Carta Astral</option>
@@ -299,12 +319,12 @@ export const Home = () => {
                   placeholder="Cuéntame sobre tu consulta..."
                   value={formState.message}
                   onChange={handleInputChange}
-                  className="w-full rounded-md border border-slate-700 bg-slate-950 px-3 py-2 text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500"
+                  className="w-full rounded-md border border-third/40 bg-white/70 px-3 py-2 text-primary placeholder-primary/50 focus:outline-none focus:ring-2 focus:ring-third"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full rounded-md bg-gradient-to-r from-violet-500 to-pink-500 px-4 py-2 font-semibold text-white shadow-lg shadow-violet-500/20 transition hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                className="w-full rounded-md bg-third px-4 py-2 font-semibold text-secondary shadow-lg shadow-black/10 transition hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-third/60"
                 aria-label="Enviar Solicitud"
               >
                 Enviar Solicitud
